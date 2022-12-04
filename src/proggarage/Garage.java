@@ -6,7 +6,10 @@
 package proggarage;
 
 /**
- *
+ * 3] stampa della situazione corrente dei posti nel garage veicolo:
+            proprietà: marca, anno, cilindrata; (per tutti)
+            auto: porte, alimentazione (diesel/benzina)
+    
  * @author gabriel.ricaldone
  */
 public class Garage {
@@ -22,6 +25,22 @@ public class Garage {
         postiMoto = new Moto[posti];
     }
     
+    public void stampaGarage() {
+        for (int i = 0; i < posti; i++) {
+            if(postiAuto[i] != null) {
+                System.out.println("Posto n" + i + ":\n" + postiAuto[i].toString() + "\n");
+            }
+            else if(postiCamion[i] != null) {
+                System.out.println("Posto n" + i + ":\n" + postiCamion[i].toString()+ "\n");
+            }
+            else if(postiMoto[i] != null) {
+                System.out.println("Posto n" + i + ":\n" + postiMoto[i].toString()+ "\n");
+            } else {
+                System.out.println("Posto n" + i + ": vuoto \n");
+            }
+        } 
+    }
+    
     public void inserisci(Auto auto) {
         boolean trov = false;
         for (int i = 0; i < posti && !trov; i++) {
@@ -29,8 +48,7 @@ public class Garage {
                 postiAuto[i] = auto;
                 trov = true;
             }
-        }      
-        
+        }       
     }
     
     public void inserisci(Camion camion) {
